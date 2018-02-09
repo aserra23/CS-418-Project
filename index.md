@@ -20,6 +20,10 @@ This project aims to retrieve, analyse and integrate various data regarding rest
   Alejandro is a Senior undergraduate student in the computer science department at UIC. Areas of interest include AI, Data    science, Machine Learning, and Stats. Alejandro is interested in those fields because he plans to pursue a career in the financial sector.<br/> 
   [![alt text][6.1]][8]
 
+3. **Weixin Liu** <br/>
+  *wliu53@uic.edu* <br/>
+  Weixin Liu is a graduate student in the computer science department at UIC. He is very good at Machine Learning and Data Mining.<br/>
+
 <!-- links to social media icons -->
 
 <!-- icons with padding -->
