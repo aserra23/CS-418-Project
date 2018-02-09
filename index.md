@@ -23,6 +23,10 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 3. **Weixin Liu** <br/>
   *wliu53@uic.edu* <br/>
   Weixin Liu is a graduate student in the computer science department at UIC. He is very good at Machine Learning and Data Mining.<br/>
+  
+4. **Farhan Ahmed** <br/>
+  *fahmed26@uic.edu* <br/>
+  Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence and augmented reality.<br/>
 
 <!-- links to social media icons -->
 
@@ -61,3 +65,7 @@ still need to implement this one
 <!-- alejandro -->
 [8]: https://github.com/aserra23
 <!-- [7]: www.linkedin.com/in/alejandro6serrano -->
+
+<!-- farhan -->
+[6]: https://github.com/farhan13
+<!-- [7]: www.linkedin.com/in/farhan-2 -->
