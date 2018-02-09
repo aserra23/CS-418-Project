@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+<h1>CS-418-Project</h1>
 
-You can use the [editor on GitHub](https://github.com/farhan13/CS-418-Project/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+<h2>Team Name: ACE</h2>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<h3>Project Description:</h3>
 
-### Markdown
+This project aims to retrieve, analyse and integrate various data regarding restaurants such as business licenses and food inspections as well as data about the city of Chicago like crime, census, demographics, weather etc. The data integration involves various aspects including training a model to learn crime statistics and predict the probability of crime in an area, determining the relationship between average review rating and food inspection result, performing sentiment analysis of Yelp reviews for restaurant etc. The integrated data will be visualized using maps, charts and graphs which will display the analysis of the team and the capabilities of the framework developed.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<h3>Team Members:</h3>
 
-```markdown
-Syntax highlighted code block
+1. **Abhijith Manohar J** <br/>
+  *amanoh2@uic.edu* <br/>
+  Abhijith is a first year masters student in the computer science department at UIC. Areas of interest include AI, Data    science and UI/UX design.<br/> 
+  [![alt text][1.1]][1]
+  [![alt text][2.1]][2]
+  [![alt text][6.1]][6]
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+<!-- links to social media icons -->
 
-1. Numbered
-2. List
+<!-- icons with padding -->
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
+[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
+[3.1]: http://i.imgur.com/yCsTjba.png (google plus icon with padding)
+[4.1]: http://i.imgur.com/YckIOms.png (tumblr icon with padding)
+[5.1]: http://i.imgur.com/1AGmwO3.png (dribbble icon with padding)
+[6.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+<!-- links to your social media accounts -->
+<!-- update these accordingly -->
+<!--
+[1]: https://twitter.com/
+[2]: https://www.facebook.com/
+[3]: https://plus.google.com/
+[4]: http://carlsed.tumblr.com/
+[5]: http://dribbble.com/
+[6]: https://github.com/
+-->
 
-### Jekyll Themes
+<!-- abhijith -->
+[1]: https://twitter.com/abhijith2893
+[2]: https://www.facebook.com/abhijith.manohar.16
+[6]: https://github.com/abhijith28
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/farhan13/CS-418-Project/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
