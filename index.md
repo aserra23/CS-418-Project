@@ -15,6 +15,12 @@ This project aims to retrieve, analyse and integrate various data regarding rest
   [![alt text][2.1]][2]
   [![alt text][6.1]][6]
 
+2. **Alejandro Serrano** <br/>
+  *aserra23@uic.edu* <br/>
+  Alejandro is a Senior undergraduate student in the computer science department at UIC. Areas of interest include AI, Data    science, Machine Learning, and Stats. Alejandro is interested in those fields because he plans to pursue a career in the financial sector.<br/> 
+  [![alt text][1.1]][1]
+  [![alt text][2.1]][2]
+  [![alt text][6.1]][6]
 
 <!-- links to social media icons -->
 
@@ -25,6 +31,10 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 [4.1]: http://i.imgur.com/YckIOms.png (tumblr icon with padding)
 [5.1]: http://i.imgur.com/1AGmwO3.png (dribbble icon with padding)
 [6.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
+<!-- we will need this one for those of us that have linkedin -->
+<!-- 
+[7.1]: http://i.imgur.com/ (linkedin icon with padding)
+-->
 
 
 
@@ -37,6 +47,8 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 [4]: http://carlsed.tumblr.com/
 [5]: http://dribbble.com/
 [6]: https://github.com/
+still need to implement this one
+[7]: www.linkedin.com/
 -->
 
 <!-- abhijith -->
@@ -44,3 +56,6 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 [2]: https://www.facebook.com/abhijith.manohar.16
 [6]: https://github.com/abhijith28
 
+<!-- alejandro -->
+[6]: https://github.com/aserra23
+[7]: www.linkedin.com/in/alejandro6serrano
