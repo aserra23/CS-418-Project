@@ -18,9 +18,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 2. **Alejandro Serrano** <br/>
   *aserra23@uic.edu* <br/>
   Alejandro is a Senior undergraduate student in the computer science department at UIC. Areas of interest include AI, Data    science, Machine Learning, and Stats. Alejandro is interested in those fields because he plans to pursue a career in the financial sector.<br/> 
-  [![alt text][1.1]][1]
-  [![alt text][2.1]][2]
-  [![alt text][6.1]][6]
+  [![alt text][6.1]][8]
 
 <!-- links to social media icons -->
 
@@ -57,5 +55,5 @@ still need to implement this one
 [6]: https://github.com/abhijith28
 
 <!-- alejandro -->
-[6]: https://github.com/aserra23
-[7]: www.linkedin.com/in/alejandro6serrano
+[8]: https://github.com/aserra23
+<!-- [7]: www.linkedin.com/in/alejandro6serrano -->
