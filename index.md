@@ -27,6 +27,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 4. **Farhan Ahmed** <br/>
   *fahmed26@uic.edu* <br/>
   Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence and augmented reality.<br/>
+[![alt text][6.1]][9]
 
 <!-- links to social media icons -->
 
@@ -67,5 +68,5 @@ still need to implement this one
 <!-- [7]: www.linkedin.com/in/alejandro6serrano -->
 
 <!-- farhan -->
-[6]: https://github.com/farhan13
+[9]: https://github.com/farhan13
 <!-- [7]: www.linkedin.com/in/farhan-2 -->
