@@ -5,6 +5,19 @@
 
 <h3>Current Status: Data Discovery and Project Setup </h3>
 
+<!-- following line was breaking my code and showing tags -->
+<!--<h4>Individial Status Reports Page:<br/><h4>-->
+
+1. *Abhijith's Reports*<br/>
+   [Abhijith's Reports](site/reports/abhijith/index.html)
+   
+2. *Alejandro's Reports* <br/>
+
+3. *Farhan's Reports* <br/>
+
+4. *Weixin's Reports* <br/>
+
+
 <h4>Project Description:</h4>
 <p>
 This project aims to retrieve, analyse and integrate various data regarding restaurants such as business licenses and food inspections as well as data about the city of Chicago like crime, census, demographics, weather etc. The data integration involves various aspects including training a model to learn crime statistics and predict the probability of crime in an area, determining the relationship between average review rating and food inspection result, performing sentiment analysis of Yelp reviews for restaurant etc. The integrated data will be visualized using maps, charts and graphs which will display the analysis of the team and the capabilities of the framework developed.</p>
