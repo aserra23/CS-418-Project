@@ -9,7 +9,7 @@
 <p>
 This project aims to retrieve, analyse and integrate various data regarding restaurants such as business licenses and food inspections as well as data about the city of Chicago like crime, census, demographics, weather etc. The data integration involves various aspects including training a model to learn crime statistics and predict the probability of crime in an area, determining the relationship between average review rating and food inspection result, performing sentiment analysis of Yelp reviews for restaurant etc. The integrated data will be visualized using maps, charts and graphs which will display the analysis of the team and the capabilities of the framework developed.</p>
 
-<a href="weeklyStatus.md"><h4>Weekly Status Report</h4></a>
+<h4><a href="weeklyStatus.md">Weekly Status Report</a></h4>
 
 <h5>Team Members:</h5>
 
