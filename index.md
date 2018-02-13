@@ -12,10 +12,13 @@
    [Abhijith's Reports](site/reports/abhijith/index.html)
    
 2. *Alejandro's Reports* <br/>
+   [Alejandro's Reports](site/reports/alejandro/index.html)
 
 3. *Farhan's Reports* <br/>
+   [Farhan's Reports](site/reports/farhan/index.html)
 
 4. *Weixin's Reports* <br/>
+   [Weixin's Reports](site/reports/weixin/index.html)
 
 
 <h4>Project Description:</h4>
