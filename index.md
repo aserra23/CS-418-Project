@@ -3,7 +3,7 @@
 <h2>Team Name: ACE</h2>
 
 
-<h3>Current Status: Data Discovery and Project Setup </h3>
+<h3>Current Status: Start Data Extraction </h3>
 
 <!-- following line was breaking my code and showing tags -->
 <!--<h4>Individial Status Reports Page:<br/><h4>-->
