@@ -40,6 +40,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
   *aserra23@uic.edu* <br/>
   Alejandro is a Senior undergraduate student in the computer science department at UIC. Areas of interest include AI, Data    science, Machine Learning, and Stats. Alejandro is interested in those fields because he plans to pursue a career in the financial sector.<br/> 
   [![alt text][6.1]][8]
+  [![alt text][7.1]][7]
   <!-- I was using the following commented line to test .md and .html files-->
   <!-- <br/> <a href="site/index.html">site to team</a> <br/> -->
 3. **Weixin Liu** <br/>
@@ -54,16 +55,16 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 <!-- links to social media icons -->
 
 <!-- icons with padding -->
-[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
-[2.1]: http://i.imgur.com/P3YfQoD.png (facebook icon with padding)
-[3.1]: http://i.imgur.com/yCsTjba.png (google plus icon with padding)
-[4.1]: http://i.imgur.com/YckIOms.png (tumblr icon with padding)
-[5.1]: http://i.imgur.com/1AGmwO3.png (dribbble icon with padding)
-[6.1]: http://i.imgur.com/0o48UoR.png (github icon with padding)
+[1.1]: site/images/icon_twitter.png (twitter icon with padding)
+[2.1]: site/images/icon_facebook.png (facebook icon with padding)
+[3.1]: site/images/icon_google.png (google plus icon with padding)
+[4.1]: site/images/icon_tumblr.png (tumblr icon with padding)
+[5.1]: site/images/Dribbble-Icon.png (dribbble icon with padding)
+[6.1]: site/images/icon_github.png (github icon with padding)
 <!-- we will need this one for those of us that have linkedin -->
-<!-- 
-[7.1]: http://i.imgur.com/ (linkedin icon with padding)
--->
+ 
+[7.1]: site/images/icon_linkedin.png (linkedin icon with padding)
+
 
 
 
@@ -87,7 +88,7 @@ still need to implement this one
 
 <!-- alejandro -->
 [8]: https://github.com/aserra23
-<!-- [7]: www.linkedin.com/in/alejandro6serrano -->
+[7]: www.linkedin.com/in/alejandro6serrano 
 
 <!-- farhan -->
 [9]: https://github.com/farhan13
