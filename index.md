@@ -58,15 +58,24 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 <!-- 
 https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_facebook.png
 -->
-[1.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_twitter.png (twitter icon with padding)
-[2.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_facebook.png (facebook icon with padding)
-[3.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_google.png (google plus icon with padding)
-[4.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_tumblr.png (tumblr icon with padding)
-[5.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/Dribbble-Icon.png (dribbble icon with padding)
-[6.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_github.png (github icon with padding)
+<!-- 
+(twitter icon with padding) 
+(facebook icon with padding)
+(google plus icon with padding)
+(tumblr icon with padding)
+(dribbble icon with padding)
+(github icon with padding)
+(linkedin icon with padding)
+-->
+[1.1]: /site/images/icon_twitter.png 
+[2.1]: /site/images/icon_facebook.png 
+[3.1]: /site/images/icon_google.png 
+[4.1]: /site/images/icon_tumblr.png 
+[5.1]: /site/images/Dribbble-Icon.png 
+[6.1]: /site/images/icon_github.png 
 <!-- we will need this one for those of us that have linkedin -->
  
-[7.1]: https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_linkedin.png (linkedin icon with padding)
+[7.1]: /site/images/icon_linkedin.png 
 
 
 
