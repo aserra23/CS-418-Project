@@ -56,7 +56,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 
 <!-- icons with padding -->
 <!-- 
-https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_facebook.png
+https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_facebook.png
 -->
 [1.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_twitter.png (twitter icon with padding)
 [2.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_facebook.png (facebook icon with padding)
@@ -66,7 +66,7 @@ https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/ico
 [6.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_github.png (github icon with padding)
 <!-- we will need this one for those of us that have linkedin -->
  
-[7.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_linkedin.png (linkedin icon with padding)
+[7.1]: https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_linkedin.png (linkedin icon with padding)
 
 
 
