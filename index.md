@@ -55,15 +55,18 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 <!-- links to social media icons -->
 
 <!-- icons with padding -->
-[1.1]: site/images/icon_twitter.png (twitter icon with padding)
-[2.1]: site/images/icon_facebook.png (facebook icon with padding)
-[3.1]: site/images/icon_google.png (google plus icon with padding)
-[4.1]: site/images/icon_tumblr.png (tumblr icon with padding)
-[5.1]: site/images/Dribbble-Icon.png (dribbble icon with padding)
-[6.1]: site/images/icon_github.png (github icon with padding)
+<!-- 
+https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_facebook.png
+-->
+[1.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_twitter.png (twitter icon with padding)
+[2.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_facebook.png (facebook icon with padding)
+[3.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_google.png (google plus icon with padding)
+[4.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_tumblr.png (tumblr icon with padding)
+[5.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/Dribbble-Icon.png (dribbble icon with padding)
+[6.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_github.png (github icon with padding)
 <!-- we will need this one for those of us that have linkedin -->
  
-[7.1]: site/images/icon_linkedin.png (linkedin icon with padding)
+[7.1]: https://raw.githubusercontent.com/farhan13/CS-418-Project/master/site/images/icon_linkedin.png (linkedin icon with padding)
 
 
 
@@ -78,7 +81,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
 [5]: http://dribbble.com/
 [6]: https://github.com/
 still need to implement this one
-[7]: www.linkedin.com/
+[7]: https://www.linkedin.com/
 -->
 
 <!-- abhijith -->
@@ -88,7 +91,7 @@ still need to implement this one
 
 <!-- alejandro -->
 [8]: https://github.com/aserra23
-[7]: www.linkedin.com/in/alejandro6serrano 
+[7]: https://www.linkedin.com/in/alejandro6serrano 
 
 <!-- farhan -->
 [9]: https://github.com/farhan13
