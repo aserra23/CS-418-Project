@@ -49,7 +49,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
   
 4. **Farhan Ahmed** <br/>
   *fahmed26@uic.edu* <br/>
-  Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence and augmented reality.<br/>
+  Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence, data science augmented reality.<br/>
 [![alt text][6.1]][9]
 
 <!-- links to social media icons -->
@@ -89,7 +89,6 @@ https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_facebook
 [4]: http://carlsed.tumblr.com/
 [5]: http://dribbble.com/
 [6]: https://github.com/
-still need to implement this one
 [7]: https://www.linkedin.com/
 -->
 
@@ -104,4 +103,4 @@ still need to implement this one
 
 <!-- farhan -->
 [9]: https://github.com/farhan13
-<!-- [7]: www.linkedin.com/in/farhan-2 -->
+[10]: www.linkedin.com/in/farhan-2 -->
