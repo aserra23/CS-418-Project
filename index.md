@@ -100,5 +100,5 @@ https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_facebook
 [7]: https://www.linkedin.com/in/alejandro6serrano 
 
 <!-- farhan -->
-[9]: https://github.com/farhan13
-[10]: https://www.linkedin.com/in/farhan-2 -->
+[6]: https://github.com/farhan13
+[7]: https://www.linkedin.com/in/farhan-2 -->
