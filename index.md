@@ -51,7 +51,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
   *fahmed26@uic.edu* <br/>
   Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence, data science augmented reality.<br/>
 [![alt text][6.1]][9]
-
+ [![alt text][7.1]][7]
 <!-- links to social media icons -->
 
 <!-- icons with padding -->
@@ -73,8 +73,6 @@ https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_facebook
 [4.1]: /site/images/icon_tumblr.png 
 [5.1]: /site/images/Dribbble-Icon.png 
 [6.1]: /site/images/icon_github.png 
-<!-- we will need this one for those of us that have linkedin -->
- 
 [7.1]: /site/images/icon_linkedin.png 
 
 
@@ -103,4 +101,4 @@ https://github.com/farhan13/CS-418-Project/blob/master/site/images/icon_facebook
 
 <!-- farhan -->
 [9]: https://github.com/farhan13
-[10]: www.linkedin.com/in/farhan-2 -->
+[7]: www.linkedin.com/in/farhan-2 -->
