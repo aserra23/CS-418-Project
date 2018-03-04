@@ -4,3 +4,4 @@ src/__pycache__/
 src/restaurant.csv
 src/review.csv
 src/transformed.csv
+src/attributes.json
