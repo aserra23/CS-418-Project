@@ -1,0 +1,6 @@
+.git/
+.idea/
+src/__pycache__/
+src/restaurant.csv
+src/review.csv
+src/transformed.csv
