@@ -33,7 +33,7 @@ if __name__ == '__main__':
     headerNew = json.loads(headerNew)
 
     websiteData = urllib.request.Request(urlNew, headers=headerNew, method='GET')
-    websiteData = urllib.request.urlopen(websiteData).read()
+    websiteData = urllib.request.urlopen(websiteData).read().decode('utf8')
     listOfBusinesses = json.loads(websiteData)
 
     totalSize = listOfBusinesses['total']
