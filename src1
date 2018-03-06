@@ -119,7 +119,7 @@ if __name__ == '__main__':
             location = jsonBusiness['location']
 
             #check if business is within the zipcode we desire and has more then 20 reviews if so continue
-            if location['zip_code'] == '60602' and jsonBusiness['review_count'] > 20:
+            if location['zip_code'] == '60602' and jsonBusiness['review_count'] > 19:
 
                 website_data = website_parse(jsonBusiness['url'])
                 #print (website_data)
