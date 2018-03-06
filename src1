@@ -1,0 +1,216 @@
+from bs4 import BeautifulSoup
+import urllib
+import requests
+import json
+import csv
+
+from dataClasses import User
+from dataClasses import Business
+from dataClasses import Review
+
+if __name__ == '__main__':
+
+    #this opens or creates author.csv , review.csv, restaurant.csv
+    authors = open('user.csv', 'w')
+    reviews = open('review.csv', 'w')
+    restaurant = open('restaurant.csv', 'w')
+
+    #Write header of restaurant
+    restaurant.write('restaurantID,name,location,reviewCount,rating,categories,address,Hours,GoodforKids,AcceptsCreditCards,Parking,Attire,GoodforGroups,PriceRange,TakesReservations,Delivery,Takeout,WaiterService,OutdoorSeating,WiFi,GoodFor,Alcohol,NoiseLevel,Ambience,HasTV,Caters,WheelchairAccessible,webSite,phoneNumber,reviewCount \n')
+
+    #used to get inputs from attributes.json
+    attributes_File = open('attributes.json', 'r').read()
+    attributes = json.loads(attributes_File)
+
+    #used to track index and if it should keep on trying to make calls to api.yelp
+    offset = 0
+    stillGettingFiles = True
+    totalSize = 0
+
+    #empty api format
+    url = 'https://api.yelp.com/v3/businesses/search?offset={}&limit=50&categories={}&location={}'
+    header = '"Authorization": "Bearer {}"'
+
+    #filled api information to make a call
+    urlNew = url.format(str(offset), attributes['categories'], attributes['location'])
+    headerNew = '{' + header.format(attributes['api_key']) + '}'
+    headerNew = json.loads(headerNew)
+
+    websiteData = urllib.request.Request(urlNew, headers=headerNew, method='GET')
+    websiteData = urllib.request.urlopen(websiteData).read().decode('utf8')
+
+    listOfBusinesses = json.loads(websiteData)
+    totalSize = listOfBusinesses['total']
+
+
+
+    def website_parse(url):
+
+        print (url)
+        #Initialise dictionary to be returned
+        data_dict = {}
+        response_page = urllib.request.urlopen(url)
+        html_page = response_page.read()
+        soup = BeautifulSoup(html_page, 'html.parser')
+
+        # Retrieve all other required info from 'More Business info'
+        div = soup.find_all('div', {'class': 'ywidget'})
+
+        for each_div in div:
+            req_text = each_div.find(text='More business info')
+            if req_text:
+
+                #Retrieve the price range
+                price = soup.find('dd', {'class': 'nowrap price-description'})
+                if price:
+                    data_dict['Price'] = price.text.strip()
+                else:
+                    data_dict['Price'] = ''
+
+                #Retrieve the hours
+                hours = soup.find('div', {'class': 'ywidget biz-hours'})
+                if hours:
+                    hours_table = hours.find('table', {'class': 'table table-simple hours-table'})
+                    if hours_table:
+                        hours_row = hours_table.find_all('tr')
+                        if hours_row:
+                            req_hours=''
+
+                            for each in hours_row:
+                                hours_day = each.find('th')
+                                hours_time = each.find('td')
+                                time = ''
+                                each_seg = hours_time.find_all('span', {'class': 'nowrap'})
+                                for each_part in each_seg:
+                                    time = time + '-' + each_part.text.strip()
+                                req_hours = req_hours + hours_day.text.strip() + time + ' '
+
+                            data_dict['Hours'] = req_hours.strip()
+                        else:
+                            data_dict['Hours'] = ''
+                    else:
+                        data_dict['Hours'] = ''
+                else:
+                    data_dict['Hours'] = ''
+
+                req_div = each_div
+                req_data = req_div.find_all('dl')
+
+                for each in req_data:
+                    a = each.find('dt').text
+                    b = each.find('dd').text
+
+                    key = a.strip()
+
+                    if key not in data_dict:
+                        data_dict[key] = []
+                    data_dict[key] = b.strip()
+
+                return data_dict
+
+
+    #loops until we get all businesses
+    while offset < totalSize:
+
+        #do code here to check each business and update the csv files
+        #we get 50 businesses so check array from 0 to 49
+        for i in range(0,49):
+            jsonBusiness = listOfBusinesses['businesses'][i]
+            location = jsonBusiness['location']
+
+            #check if business is within the zipcode we desire and has more then 20 reviews if so continue
+            if location['zip_code'] == '60602' and jsonBusiness['review_count'] > 20:
+
+                website_data = website_parse(jsonBusiness['url'])
+                #print (website_data)
+                if website_data:
+                    #Retrieve from the yelp API
+                    Business.businessID = jsonBusiness['id']
+                    Business.name = jsonBusiness['name']
+
+                    #Convert location from dict to string
+                    a = []
+                    value = ''
+                    dict = jsonBusiness['location']
+                    for key in dict:
+                        a.append(dict[key])
+                    a = a[0:-1]
+
+                    for each in a:
+                        if each:
+                           value = value + each + " "
+
+                    Business.location = value.strip()    #concatenate or display as such?
+                    Business.webSite = jsonBusiness['url']
+                    Business.reviewCount = str(jsonBusiness['review_count'])
+                    Business.rating = str(jsonBusiness['rating'])
+
+                    #Convert categories from list to single string
+                    a = jsonBusiness['categories']
+                    text = ''
+                    for each in a:
+                        for key in each:
+                            text = text + key + ':' + each[key] + ' '
+
+                    Business.categories = text.strip() #concatenate or display as such?
+
+                    a = location['display_address']
+                    text = ''
+                    for each in a:
+                        text = text + each + ' '
+
+                    Business.address = text.strip() #concatenate or display as such ? Same as location?
+                    Business.phoneNumber = str(jsonBusiness['phone'])
+
+                    #Retrieve from website
+                    Business.Hours = website_data.get('Hours','')
+                    Business.GoodforKids = website_data.get('Good for Kids','')
+                    Business.AcceptsCreditCards = website_data.get('Accepts Credit Cards','')
+                    Business.Parking = website_data.get('Parking','')
+                    Business.Attire = website_data.get('Attire','')
+                    Business.GoodforGroups = website_data.get('Good for Groups','')
+                    Business.PriceRange = website_data.get('Price','')
+                    Business.TakesReservations = website_data.get('Takes Reservations','')
+                    Business.Delivery = website_data.get('Delivery','')
+                    Business.Takeout = website_data.get('Take-out','')
+                    Business.WaiterService = website_data.get('Waiter Service','')
+                    Business.OutdoorSeating = website_data.get('Outdoor Seating','')
+                    Business.WiFi = website_data.get('Wi-Fi','')
+                    Business.GoodFor = website_data.get('Good For','')
+                    Business.Alcohol = website_data.get('Alcohol','')
+                    Business.NoiseLevel = website_data.get('Noise Level','')
+                    Business.Ambience = website_data.get('Ambience','')
+                    Business.HasTV = website_data.get('Has TV','')
+                    Business.Caters = website_data.get('Caters','')
+                    Business.WheelchairAccessible = website_data.get('Wheelchair Accessible','')
+
+                    data = [Business.businessID,Business.name,Business.location,Business.reviewCount,Business.rating,Business.categories,Business.address,Business.Hours,Business.GoodforKids,Business.AcceptsCreditCards,Business.Parking,Business.Attire,Business.GoodforGroups,Business.PriceRange,Business.TakesReservations,Business.Delivery,Business.Takeout,Business.WaiterService,Business.OutdoorSeating,Business.WiFi,Business.GoodFor,Business.Alcohol,Business.NoiseLevel,Business.Ambience,Business.HasTV,Business.Caters,Business.WheelchairAccessible,Business.webSite,Business.phoneNumber,Business.reviewCount]
+                    #print (data)
+                    for count,each in enumerate(data):
+                        if count != len(data)-1:
+                            restaurant.write(each)
+                            restaurant.write(',')
+                        else:
+                            restaurant.write(each)
+                    restaurant.write('\n')
+
+            '''
+            if in zipcode:
+                #do code to extract business info from yelp api to Business.class
+                #do code to fetch yelp business page
+                #do code to view reviews and parse through array of reviews and add to review csv
+                        #if user is not in user.csv:
+                            #get user data
+            '''
+
+
+
+
+        #increase offset
+        offset += 50
+
+        #get next set of businesses
+        urlNew = url.format(str(offset), attributes['categories'], attributes['location'])
+        websiteData = urllib.request.Request(urlNew, headers=headerNew, method='GET')
+        websiteData = urllib.request.urlopen(websiteData).read().decode('utf8')
+        listOfBusinesses = json.loads(websiteData)
