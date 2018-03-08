@@ -13,13 +13,10 @@ class User:
     photoCount = None
 
     #constructor
-    def __init__(self, userID, name, location, revCount, friendCount, photoCount):
-        self.userID = userID
-        self.name = name
-        self.location = location
-        self.reviewCount = revCount
-        self.friendCount = friendCount
-        self.photoCount = photoCount
+    def __init__(self):
+        self.reviewCount = 0
+        self.friendCount = 0
+        self.photoCount = 0
 
     #utility functions
     def turnToString(self, value):
@@ -28,7 +25,7 @@ class User:
         return str(value)
 
     def toString(self):
-        return self.authorID + ', ' + self.name + ', ' + self.location + ', ' + self.turnToString(self.reviewCount) + ', ' + self.turnToString(self.friendCount) + ', ' + self.turnToString(self.photoCount)
+        return self.authorID + ', ' + self.name + ', ' + self.location + ', ' + self.turnToString(self.reviewCount) + ', ' + self.turnToString(self.friendCount) + ', ' + self.turnToString(self.photoCount) + '\n'
 
 
 #class that holds review info
