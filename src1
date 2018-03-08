@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
     #Write header of restaurant
     restaurant.write('restaurantID,name,location,reviewCount,rating,categories,address,Hours,GoodforKids,AcceptsCreditCards,Parking,Attire,GoodforGroups,PriceRange,TakesReservations,Delivery,Takeout,WaiterService,OutdoorSeating,WiFi,GoodFor,Alcohol,NoiseLevel,Ambience,HasTV,Caters,WheelchairAccessible,webSite,phoneNumber,reviewCount \n')
+    authors.write('authorID,name,location,reviewCount,friendCount,photoCount \n')
 
     #used to get inputs from attributes.json
     attributes_File = open('attributes.json', 'r').read()
@@ -40,7 +41,9 @@ if __name__ == '__main__':
     websiteData = urllib.request.urlopen(websiteData).read().decode('utf8')
 
     listOfBusinesses = json.loads(websiteData)
+    print (listOfBusinesses)
     totalSize = listOfBusinesses['total']
+    print (totalSize)
 
 
 
@@ -106,9 +109,98 @@ if __name__ == '__main__':
                         data_dict[key] = []
                     data_dict[key] = b.strip()
 
+                # Retrieve author and review details
+                review_div = soup.find('div', {'class': 'review-list'})
+                review_li = review_div.find_all('li')
+
+                for each_li in review_li[1:]:
+                    userID_div = each_li.find_all('div', {'class': 'review review--with-sidebar'})
+                    if (userID_div):
+                        id = (userID_div)[0]['data-signup-object']
+                        req_id = id[8:]
+                        authors.write(req_id)
+                        authors.write(',')
+
+                        name = userID_div[0].find_all('li', {'class': 'user-name'})
+                        name1 = name[0].find_all('a')
+                        authors.write(name1[0].text.strip())
+                        authors.write(',')
+
+                        location = userID_div[0].find_all('li', {'class': 'user-location'})
+                        if (location):
+                            authors.write(location[0].text.strip().replace(',', ''))
+                            authors.write(',')
+                        else:
+                            authors.write(',')
+
+                        review_count = userID_div[0].find_all('li', {'class': 'review-count'})
+                        if (review_count):
+                            authors.write(review_count[0].text.strip()[0:-8])
+                            authors.write(',')
+                        else:
+                            authors.write(',')
+
+                        friend_count = userID_div[0].find_all('li', {'class': 'friend-count'})
+                        if (friend_count):
+                            authors.write(friend_count[0].text.strip()[0:-8])
+                            authors.write(',')
+                        else:
+                            authors.write(',')
+
+                        photo_count = userID_div[0].find_all('li', {'class': 'photo-count'})
+                        if (photo_count):
+                            authors.write(photo_count[0].text.strip()[0:-7])
+                            authors.write('\n')
+                        else:
+                            authors.write('\n')
+
+                # for num, each in enumerate(url):
+                #     if each == '?':
+                #         break;
+                #
+                # new_url = url[0:num + 1] + 'start=20'
+                # response_page1 = urllib.request.urlopen(new_url)
+                # html_page1 = response_page.read()
+                # soup1 = BeautifulSoup(html_page1, 'html.parser')
+                #
+                # review_div = soup1.find('div', {'class': 'review-list'})
+                # review_li = review_div.find_all('li')
+                #
+                # for each_li in review_li[1:]:
+                #     userID_div = each_li.find_all('div', {'class': 'review review--with-sidebar'})
+                #     if (userID_div):
+                #         id = (userID_div)[0]['data-signup-object']
+                #         req_id = id[8:]
+                #         authors.write(req_id)
+                #         authors.write(',')
+                #
+                #         name = userID_div[0].find_all('li', {'class': 'user-name'})
+                #         name1 = name[0].find_all('a')
+                #         authors.write(name1[0].text.strip())
+                #         authors.write(',')
+                #
+                #         location = userID_div[0].find_all('li', {'class': 'user-location'})
+                #         authors.write(location[0].text.strip().replace(',', ''))
+                #         authors.write(',')
+                #
+                #         review_count = userID_div[0].find_all('li', {'class': 'review-count'})
+                #         authors.write(review_count[0].text.strip()[0:-8])
+                #         authors.write(',')
+                #
+                #         friend_count = userID_div[0].find_all('li', {'class': 'friend-count'})
+                #         authors.write(friend_count[0].text.strip()[0:-8])
+                #         authors.write(',')
+                #
+                #         photo_count = userID_div[0].find_all('li', {'class': 'photo-count'})
+                #         authors.write(photo_count[0].text.strip()[0:-7])
+                #         authors.write('\n')
+
+
+
+
                 return data_dict
-
-
+    count_valid=0
+    count_invalid = 0
     #loops until we get all businesses
     while offset < totalSize:
 
@@ -119,8 +211,8 @@ if __name__ == '__main__':
             location = jsonBusiness['location']
 
             #check if business is within the zipcode we desire and has more then 20 reviews if so continue
-            if location['zip_code'] == '60602' and jsonBusiness['review_count'] > 19:
-
+            if location['zip_code'] == '60602' and jsonBusiness['review_count'] >= 20:
+                count_valid = count_valid+1
                 website_data = website_parse(jsonBusiness['url'])
                 #print (website_data)
                 if website_data:
@@ -193,7 +285,7 @@ if __name__ == '__main__':
                         else:
                             restaurant.write(each)
                     restaurant.write('\n')
-
+            count_invalid = count_invalid +1
             '''
             if in zipcode:
                 #do code to extract business info from yelp api to Business.class
@@ -214,3 +306,6 @@ if __name__ == '__main__':
         websiteData = urllib.request.Request(urlNew, headers=headerNew, method='GET')
         websiteData = urllib.request.urlopen(websiteData).read().decode('utf8')
         listOfBusinesses = json.loads(websiteData)
+        print(listOfBusinesses)
+        print ("count_valid" + str(count_valid))
+        print ("count_invalid" + str(count_invalid))
