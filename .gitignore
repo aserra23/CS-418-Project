@@ -6,3 +6,4 @@ src/review.csv
 src/transformed.csv
 src/attributes.json
 src/user.csv
+out/
