@@ -10,7 +10,7 @@ from dataClasses import Business
 from dataClasses import Review
 
 
-def website_parse(url, bussinessID):
+def website_parse(url, bussinessID, reviews, authors):
     sleep.sleep(6)
     print(url)
     #Initialise dictionary to be returned
@@ -196,7 +196,7 @@ if __name__ == '__main__':
                     if jsonBusiness['review_count'] >= 17:
 
                         #getting website info pass url and biz id
-                        website_data = website_parse(jsonBusiness['url'], jsonBusiness['id'])
+                        website_data = website_parse(jsonBusiness['url'], jsonBusiness['id'], reviews, authors)
 
                         if website_data:
                             #Retrieve from the yelp API
@@ -303,3 +303,8 @@ if __name__ == '__main__':
             totalSize = listOfBusinesses['total']
 
     print(countZip)
+
+    #close the files
+    reviews.close()
+    authors.close()
+    restaurant.close()
