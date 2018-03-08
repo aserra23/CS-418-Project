@@ -1,5 +1,9 @@
 {
   "api_key":"your api key goes here so check yelp to get api key",
   "categories":"Restaurant",
-  "location":"Chicago,60602"
+  "location":
+  {
+    "list":["Chicago,60602", "Chicago,60612"],
+    "size": 2
+  }
 }
