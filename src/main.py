@@ -9,8 +9,8 @@ from dataClasses import User
 from dataClasses import Business
 from dataClasses import Review
 
-# testing Farhan comment
-def website_parse(url, bussinessID, reviews, authors):
+
+def website_parse(url, bussinessID, reviews, authors, userDB):
     sleep.sleep(6)
     print(url)
     #Initialise dictionary to be returned
@@ -22,10 +22,12 @@ def website_parse(url, bussinessID, reviews, authors):
     # Retrieve all other required info from 'More Business info'
     div = soup.find_all('div', {'class': 'ywidget'})
     span = soup.find_all('a', {'target': '_blank', 'rel': 'noopener'}, href=re.compile("website_link"))
+    divReviewStuff = soup.find_all('div',{'class': 'review-wrapper'})
 
     #this gets address from website
     address = soup.find_all('address')
-    if address.len == 3:
+
+    if address.__len__ == 3:
         address = address[1].contents[0].strip()
         data_dict['Address'] = address
     else:
@@ -91,46 +93,89 @@ def website_parse(url, bussinessID, reviews, authors):
             review_div = soup.find('div', {'class': 'review-list'})
             review_li = review_div.find_all('li')
 
+            reviewConter = 1
+
             for each_li in review_li[1:]:
                 userID_div = each_li.find_all('div', {'class': 'review review--with-sidebar'})
                 if (userID_div):
+                    currentUser = User()
                     id = (userID_div)[0]['data-signup-object']
-                    req_id = id[8:]
-                    authors.write(req_id)
-                    authors.write(',')
+                    currentUser.authorID = id[8:]
 
                     name = userID_div[0].find_all('li', {'class': 'user-name'})
                     name1 = name[0].find_all('a')
-                    authors.write(name1[0].text.strip())
-                    authors.write(',')
+                    currentUser.name = name1[0].text.strip()
 
                     location = userID_div[0].find_all('li', {'class': 'user-location'})
                     if (location):
-                        authors.write(location[0].text.strip().replace(',', ''))
-                        authors.write(',')
+                        currentUser.location = location[0].text.strip().replace(',', '')
                     else:
-                        authors.write(',')
+                        currentUser.location = ''
 
                     review_count = userID_div[0].find_all('li', {'class': 'review-count'})
                     if (review_count):
-                        authors.write(review_count[0].text.strip()[0:-8])
-                        authors.write(',')
+                        intVal = review_count[0].text.strip()[0:-8]
+                        if intVal != '':
+                            currentUser.reviewCount = int()
+                        else:
+                            currentUser.reviewCount = 0
                     else:
-                        authors.write(',')
+                        currentUser.reviewCount = 0
 
                     friend_count = userID_div[0].find_all('li', {'class': 'friend-count'})
                     if (friend_count):
-                        authors.write(friend_count[0].text.strip()[0:-8])
-                        authors.write(',')
+                        intVal = friend_count[0].text.strip()[0:-8]
+                        if intVal != '':
+                            currentUser.friendCount = int(intVal)
+                        else:
+                            currentUser.friendCount = 0
                     else:
-                        authors.write(',')
+                        currentUser.friendCount = 0
 
                     photo_count = userID_div[0].find_all('li', {'class': 'photo-count'})
                     if (photo_count):
-                        authors.write(photo_count[0].text.strip()[0:-7])
-                        authors.write('\n')
+                        intVal = photo_count[0].text.strip()[0:-7]
+                        if intVal != '':
+                            currentUser.photoCount = int(intVal)
+                        else:
+                            currentUser.photoCount = 0
                     else:
-                        authors.write('\n')
+                        currentUser.photoCount = 0
+
+                    #if user is in the db then dont add
+                    if currentUser.authorID in userDB:
+                        sleep.sleep(.5)
+                    else:
+                        userDB.append(currentUser.authorID)
+                        authors.write(currentUser.toString())
+
+                    reviewID = (userID_div)[0]['data-review-id']
+                    thisReviewID = divReviewStuff[reviewConter].find_all('div', {'class': 'rateReview voting-feedback'})
+                    thisReviewID = thisReviewID[0].attrs['data-review-id']
+                    if reviewID == thisReviewID:
+                        dateReview = divReviewStuff[reviewConter].contents[1].contents[1].text.strip()
+
+                        reviewData = divReviewStuff[reviewConter].find_all('p')
+                        reviewData = reviewData[0].text.strip()
+
+                        ratingReview = divReviewStuff[reviewConter].find_all('div', class_=re.compile("i-stars"))
+                        ratingReview = ratingReview[0].attrs['title'].strip()
+
+                        usefulCount = divReviewStuff[reviewConter].find_all('a', {'rel': 'useful'})
+                        usefulCount = usefulCount[0].find_all('span', {'class': 'count'})
+                        usefulCount = usefulCount[0].text.strip()
+
+                        funnyCount = divReviewStuff[reviewConter].find_all('a', {'rel': 'funny'})
+                        funnyCount = funnyCount[0].find_all('span', {'class': 'count'})
+                        funnyCount = funnyCount[0].text.strip()
+
+                        coolCount = divReviewStuff[reviewConter].find_all('a', {'rel': 'cool'})
+                        coolCount = coolCount[0].find_all('span', {'class': 'count'})
+                        coolCount = coolCount[0].text.strip()
+
+                        #'businessID,reviewID,userID,date,reviewContent,rating,usefulCount,coolCount,funnyCount\n')
+                        reviews.write(bussinessID + ',' + thisReviewID + ',' + currentUser.authorID + ',' + dateReview + ',' + reviewData + ',' + ratingReview + ',' + usefulCount + ',' + coolCount + ',' + funnyCount + '\n')
+                    reviewConter += 1
 
             return data_dict
 
@@ -142,6 +187,11 @@ if __name__ == '__main__':
     reviews = open('review.csv', 'w')
     restaurant = open('restaurant.csv', 'w')
 
+    #adding headers
+    authors.write('authorID,name,location,reviewCount,friendCount,photoCount\n')
+    reviews.write('businessID,reviewID,userID,date,reviewContent,rating,usefulCount,coolCount,funnyCount\n')
+    restaurant.write('businessID,name,location,reviewCount,rating,categories,address,Hours,GoodforKids,AcceptsCreditCards,Parking,Attire,GoodforGroups,PriceRange,TakesReservations,Delivery,Takeout,WaiterService,OutdoorSeating,WiFi,GoodFor,Alcohol,NoiseLevel,Ambience,HasTV,Caters,WheelchairAccessible,webSite,phoneNumber,reviewCount\n')
+
     #used to get inputs from attributes.json
     attributes_File = open('attributes.json', 'r').read()
     attributes = json.loads(attributes_File)
@@ -151,6 +201,7 @@ if __name__ == '__main__':
     size = 0
     offset = 0
     totalSize = 0
+    userDB = []
 
     #empty api format
     url = 'https://api.yelp.com/v3/businesses/search?offset={}&limit=50&categories={}&location={}'
@@ -196,7 +247,7 @@ if __name__ == '__main__':
                     if jsonBusiness['review_count'] >= 17:
 
                         #getting website info pass url and biz id
-                        website_data = website_parse(jsonBusiness['url'], jsonBusiness['id'], reviews, authors)
+                        website_data = website_parse(jsonBusiness['url'], jsonBusiness['id'], reviews, authors, userDB)
 
                         if website_data:
                             #Retrieve from the yelp API
