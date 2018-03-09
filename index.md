@@ -3,7 +3,7 @@
 <h2>Team Name: ACE</h2>
 
 
-<h3>Current Status: Start Data Extraction </h3>
+<h3>Current Status: Data Extraction phase </h3>
 
 <!-- following line was breaking my code and showing tags -->
 <!--<h4>Individial Status Reports Page:<br/><h4>-->
@@ -49,7 +49,7 @@ This project aims to retrieve, analyse and integrate various data regarding rest
   
 4. **Farhan Ahmed** <br/>
   *fahmed26@uic.edu* <br/>
-  Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence, data science augmented reality.<br/>
+  Farhan is a senior year undergraduate student majoring in Computer Science and is very much interested in algroithms, artificial intelligence, data science and augmented reality.<br/>
 [![alt text][6.1]][9]
 [![alt text][7.1]][10]
 <!-- links to social media icons -->
