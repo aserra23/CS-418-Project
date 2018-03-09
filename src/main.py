@@ -9,8 +9,8 @@ from dataClasses import User
 from dataClasses import Business
 from dataClasses import Review
 
-
-def website_parse(url, bussinessID, reviews, authors, userDB):
+# testing Farhan comment
+def website_parse(url, bussinessID, reviews, authors):
     sleep.sleep(6)
     print(url)
     #Initialise dictionary to be returned
@@ -25,7 +25,7 @@ def website_parse(url, bussinessID, reviews, authors, userDB):
 
     #this gets address from website
     address = soup.find_all('address')
-    if address.__len__ == 3:
+    if address.len == 3:
         address = address[1].contents[0].strip()
         data_dict['Address'] = address
     else:
@@ -94,56 +94,43 @@ def website_parse(url, bussinessID, reviews, authors, userDB):
             for each_li in review_li[1:]:
                 userID_div = each_li.find_all('div', {'class': 'review review--with-sidebar'})
                 if (userID_div):
-                    currentUser = User()
                     id = (userID_div)[0]['data-signup-object']
-                    currentUser.authorID = id[8:]
+                    req_id = id[8:]
+                    authors.write(req_id)
+                    authors.write(',')
 
                     name = userID_div[0].find_all('li', {'class': 'user-name'})
                     name1 = name[0].find_all('a')
-                    currentUser.name = name1[0].text.strip()
+                    authors.write(name1[0].text.strip())
+                    authors.write(',')
 
                     location = userID_div[0].find_all('li', {'class': 'user-location'})
                     if (location):
-                        currentUser.location = location[0].text.strip().replace(',', '')
+                        authors.write(location[0].text.strip().replace(',', ''))
+                        authors.write(',')
                     else:
-                        currentUser.location = ''
+                        authors.write(',')
 
                     review_count = userID_div[0].find_all('li', {'class': 'review-count'})
                     if (review_count):
-                        intVal = review_count[0].text.strip()[0:-8]
-                        if intVal != '':
-                            currentUser.reviewCount = int()
-                        else:
-                            currentUser.reviewCount = 0
+                        authors.write(review_count[0].text.strip()[0:-8])
+                        authors.write(',')
                     else:
-                        currentUser.reviewCount = 0
+                        authors.write(',')
 
                     friend_count = userID_div[0].find_all('li', {'class': 'friend-count'})
                     if (friend_count):
-                        intVal = friend_count[0].text.strip()[0:-8]
-                        if intVal != '':
-                            currentUser.friendCount = int(intVal)
-                        else:
-                            currentUser.friendCount = 0
+                        authors.write(friend_count[0].text.strip()[0:-8])
+                        authors.write(',')
                     else:
-                        currentUser.friendCount = 0
+                        authors.write(',')
 
                     photo_count = userID_div[0].find_all('li', {'class': 'photo-count'})
                     if (photo_count):
-                        intVal = photo_count[0].text.strip()[0:-7]
-                        if intVal != '':
-                            currentUser.photoCount = int(intVal)
-                        else:
-                            currentUser.photoCount = 0
+                        authors.write(photo_count[0].text.strip()[0:-7])
+                        authors.write('\n')
                     else:
-                        currentUser.photoCount = 0
-
-                    #if user is in the db then dont add
-                    if currentUser.authorID in userDB:
-                        sleep.sleep(.5)
-                    else:
-                        userDB.append(currentUser.authorID)
-                        authors.write(currentUser.toString())
+                        authors.write('\n')
 
             return data_dict
 
@@ -164,7 +151,6 @@ if __name__ == '__main__':
     size = 0
     offset = 0
     totalSize = 0
-    userDB = []
 
     #empty api format
     url = 'https://api.yelp.com/v3/businesses/search?offset={}&limit=50&categories={}&location={}'
@@ -210,7 +196,7 @@ if __name__ == '__main__':
                     if jsonBusiness['review_count'] >= 17:
 
                         #getting website info pass url and biz id
-                        website_data = website_parse(jsonBusiness['url'], jsonBusiness['id'], reviews, authors, userDB)
+                        website_data = website_parse(jsonBusiness['url'], jsonBusiness['id'], reviews, authors)
 
                         if website_data:
                             #Retrieve from the yelp API
