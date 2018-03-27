@@ -31,6 +31,8 @@ if __name__ == '__main__':
     oldReference = csv.reader(open('Crimes_-_2001_to_present.csv', 'r'))
     
     #need to manually update json file for your parameters
+    #go to website for district and beat 
+    #https://operations.chicagopolice.org/FindMyDistrict
     attributes_File = open('crimeAttributes.json', 'r').read()
     crimeAttributes = json.loads(attributes_File)
 
