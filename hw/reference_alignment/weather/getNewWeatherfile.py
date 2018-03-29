@@ -28,7 +28,7 @@ def headerStuff(headers):
     return myString + '\n'
 
 if __name__ == '__main__':
-    //this file is on git with similar title but different
+    #this file is on git with similar title but different
     oldWeather = csv.reader(open('Ohare_Chicago_Weather.csv', 'r'))
     oldWeather_help = []
 
@@ -56,15 +56,15 @@ if __name__ == '__main__':
 
             #comparevalues here
             
-            //might need to change depending on if you opened excel and it modified the file
+            #might need to change depending on if you opened excel and it modified the file
             date = data_dict['DATE'].split(' ')[0]
             month, day, year = date.split('/')
-            //turn to 20xx
+            #turn to 20xx
             year = '20' + year
 
             for w in dates_list:
                 if w != '\n' or w != '':
-                    //this might also need to be changed do to excel changing the format
+                    #this might also need to be changed do to excel changing the format
                     w = w.split(' ')[0]
                     mm, dd, yyyy = w.split('/')
 
